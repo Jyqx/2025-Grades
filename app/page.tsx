@@ -1,101 +1,126 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { useState } from "react";
+import AssessmentSchedule from "./components/AssessmentSchedule";
+import assessments from "../data/assessments.json"; // Import the JSON
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+// Type for each assessment item
+interface Assessment {
+	id: number;
+	name: string;
+	weight: number;
+	dueDate: string;
+	time: string;
+}
+
+// Type for the assessments object
+type AssessmentData = {
+	[key in "DISC301" | "PROD323" | "PROD321" | "SENG201"]: Assessment[];
+};
+
+// Type the imported JSON data
+const typedAssessments: AssessmentData = assessments;
+
+const tabs: Array<keyof AssessmentData> = [
+	"DISC301",
+	"PROD323",
+	"PROD321",
+	"SENG201",
+];
+
+function getNextAssessment(assessments: Assessment[]) {
+	const today = new Date();
+	const currentYear = today.getFullYear();
+	const upcomingAssessments = assessments.filter((assessment) => {
+		const dueDate = new Date(`${assessment.dueDate} ${currentYear}`);
+		return dueDate >= today;
+	});
+	console.log("Upcoming Assessments:", upcomingAssessments);
+	return upcomingAssessments.sort(
+		(a, b) =>
+			new Date(`${a.dueDate} ${currentYear}`).getTime() -
+			new Date(`${b.dueDate} ${currentYear}`).getTime(),
+	)[0];
+}
+
+export default function TabNavigator() {
+	const [activeTab, setActiveTab] = useState<keyof AssessmentData>("DISC301");
+	const today = new Date().toLocaleDateString("en-US", {
+		day: "numeric",
+		month: "long",
+	});
+
+	return (
+		<div className="flex w-full max-w-4xl mx-auto mt-8">
+			{/* Sidebar */}
+			<div className="w-1/4 p-4 border-r">
+				{/* Current Date */}
+				<div className="text-left text-gray-600 mb-4 text-xl font-bold">
+					{today}
+				</div>
+
+				{/* Next Assessments */}
+				<div className="mb-4">
+					{tabs.map((tab) => {
+						const nextAssessment = getNextAssessment(typedAssessments[tab]);
+						return (
+							<div key={tab} className="text-blue-600 mb-4">
+								<div className="font-bold">{tab}:</div>
+								<div className="text-md text-gray-600">
+									{nextAssessment
+										? `${nextAssessment.name} due in ${Math.ceil(
+												(new Date(
+													`${nextAssessment.dueDate} ${new Date().getFullYear()}`,
+												).getTime() -
+													new Date().getTime()) /
+													(1000 * 60 * 60 * 24),
+											)} days`
+										: "No upcoming assessments"}
+								</div>
+								<hr className="my-2" />
+							</div>
+						);
+					})}
+				</div>
+			</div>
+
+			{/* Main Content */}
+			<div className="flex-grow p-4 flex justify-center">
+				<div className="w-full max-w-2xl">
+					{/* Tab Navigation */}
+					<div className="flex border-b mb-4">
+						{tabs.map((tab) => (
+							<button
+								key={tab}
+								type="button"
+								onClick={() => setActiveTab(tab)}
+								className={`p-2 flex-1 text-center font-semibold ${
+									activeTab === tab
+										? "border-b-2 border-blue-500 text-blue-600"
+										: "text-gray-600"
+								}`}
+							>
+								{tab}
+							</button>
+						))}
+					</div>
+
+					{/* Tab Content */}
+					<div>
+						{typedAssessments[activeTab].length > 0 ? (
+							<AssessmentSchedule
+								key={activeTab} // Pass the activeTab as the key
+								assessments={typedAssessments[activeTab]}
+								className={activeTab}
+							/>
+						) : (
+							<div className="p-6 text-gray-500">
+								No assessments available yet.
+							</div>
+						)}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

@@ -1,0 +1,65 @@
+{
+	"DISC301": [
+		{
+			"id": 1,
+			"name": "In class Ideation and 'Elevator Pitch'",
+			"weight": 15,
+			"dueDate": "March 12",
+			"time": "10am",
+			"description": "In class group activity"
+		},
+		{
+			"id": 2,
+			"name": "Writing Assignment (Script/Treatment)",
+			"weight": 35,
+			"dueDate": "April 4",
+			"time": "12pm"
+		},
+		{
+			"id": 3,
+			"name": "Research Essay (2000 words)",
+			"weight": 35,
+			"dueDate": "May 16",
+			"time": "12pm"
+		},
+		{
+			"id": 4,
+			"name": "CV revisited",
+			"weight": 15,
+			"dueDate": "May 30",
+			"time": "12pm"
+		}
+	],
+	"PROD323": [],
+	"PROD321": [
+		{
+			"id": 1,
+			"name": "Lab submissions",
+			"weight": 10,
+			"dueDate": "Weeks 1-10",
+			"time": "10am"
+		},
+		{
+			"id": 2,
+			"name": "Assignment 1 – 3D Graphics Programming",
+			"weight": 35,
+			"dueDate": "March 28",
+			"time": "11.55pm"
+		},
+		{
+			"id": 3,
+			"name": "Assignment 2 - Visibility Determination and Animation",
+			"weight": 40,
+			"dueDate": "May 30",
+			"time": "12pm"
+		},
+		{
+			"id": 4,
+			"name": "Assignment 3 - Shaders",
+			"weight": 15,
+			"dueDate": "June 20",
+			"time": "11.55pm"
+		}
+	],
+	"SENG201": []
+}
