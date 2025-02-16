@@ -30,7 +30,43 @@
 			"time": "12pm"
 		}
 	],
-	"PROD323": [],
+	"PROD323": [
+		{
+			"id": 1,
+			"name": "Lab Challenges (x 8)",
+			"weight": 32,
+			"dueDate": "Weeks 1-7 & 9",
+			"time": "10am"
+		},
+		{
+			"id": 2,
+			"name": "Presentations (x 4)",
+			"weight": 8,
+			"dueDate": "Weeks 9-12",
+			"time": "10am"
+		},
+		{
+			"id": 3,
+			"name": "AIGT Racing Assignment",
+			"weight": 15,
+			"dueDate": "Week 8",
+			"time": "12pm"
+		},
+		{
+			"id": 4,
+			"name": " Game AI Assignment",
+			"weight": 25,
+			"dueDate": "Week 12",
+			"time": "11.55pm"
+		},
+		{
+			"id": 5,
+			"name": "Test",
+			"weight": 20,
+			"dueDate": "Week 12",
+			"time": "11.55pm"
+		}
+	],
 	"PROD321": [
 		{
 			"id": 1,
@@ -61,5 +97,30 @@
 			"time": "11.55pm"
 		}
 	],
-	"SENG201": []
+	"SENG201": [
+		{
+			"id": 1,
+			"name": "Lab Test",
+			"weight": 20,
+			"dueDate": "n/a",
+			"time": "10am",
+			"description": "Normally a computer-based 90-minute closed-book test."
+		},
+		{
+			"id": 2,
+			"name": "Project",
+			"weight": 30,
+			"dueDate": "March 28",
+			"time": "11.55pm",
+			"description": "Normally a small-scale soware development project using JavaFX; done in pairs."
+		},
+		{
+			"id": 3,
+			"name": "Final Exam",
+			"weight": 50,
+			"dueDate": "May 30",
+			"time": "12pm",
+			"description": "Normally a computer-based, 2-hour exam; calculators are not allowed; ques ons will assume knowledge expected to have been gained through prac cal work and may be based on examples introduced in labs or the project."
+		}
+	]
 }
