@@ -73,28 +73,32 @@
 			"name": "Lab submissions",
 			"weight": 10,
 			"dueDate": "Weeks 1-10",
-			"time": "10am"
+			"time": "10am",
+			"description": "1% Per Lab. Grade will be allocated as lab work complete (1%) or incomplete (0%). Work must beshown to Sabrina within 7 days of the end of the lab session to be awarded the mark."
 		},
 		{
 			"id": 2,
 			"name": "Assignment 1 – 3D Graphics Programming",
 			"weight": 35,
 			"dueDate": "March 28",
-			"time": "11.55pm"
+			"time": "11.55pm",
+			"description": "Students will be required to design three dimensional graphical environments and implement them using techniques covered in Foundations of Computer Graphics and Advanced Techniques in 3D Graphics"
 		},
 		{
 			"id": 3,
 			"name": "Assignment 2 - Visibility Determination and Animation",
 			"weight": 40,
 			"dueDate": "May 30",
-			"time": "12pm"
+			"time": "12pm",
+			"description": "Students will design and create a playable game using techniques learned in Rendering Pipelines and Optimisations, controlling a character animated using techniques learned in Animation"
 		},
 		{
 			"id": 4,
 			"name": "Assignment 3 - Shaders",
 			"weight": 15,
 			"dueDate": "June 20",
-			"time": "11.55pm"
+			"time": "11.55pm",
+			"description": "Students will work through a series of programming tasks to gain experience developing their own shaders in Cg/HLSL"
 		}
 	],
 	"SENG201": [
