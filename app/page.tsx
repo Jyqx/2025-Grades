@@ -15,7 +15,7 @@ interface Assessment {
 
 // Type for the assessments object
 type AssessmentData = {
-	[key in "DISC301" | "PROD323" | "PROD321" | "SENG201"]: Assessment[];
+	[key in "DISC301" | "PROD323" | "PROD321" | "SENG201" | "PROD225"]: Assessment[];
 };
 
 // Type the imported JSON data
@@ -26,6 +26,7 @@ const tabs: Array<keyof AssessmentData> = [
 	"PROD323",
 	"PROD321",
 	"SENG201",
+	"PROD225",
 ];
 
 function getNextAssessment(assessments: Assessment[]) {

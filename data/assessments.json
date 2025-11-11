@@ -122,5 +122,28 @@
 			"time": "12pm",
 			"description": "Normally a computer-based, 2-hour exam; calculators are not allowed; ques ons will assume knowledge expected to have been gained through prac cal work and may be based on examples introduced in labs or the project."
 		}
+	],
+	"PROD225": [
+		{
+			"id": 1,
+			"name": "Assignment 1",
+			"weight": 40,
+			"dueDate": "October 2",
+			"time": "10am"
+		},
+		{
+			"id": 2,
+			"name": "Assignment 2",
+			"weight": 46,
+			"dueDate": "November 1",
+			"time": "12pm"
+		},
+		{
+			"id": 3,
+			"name": "Labs",
+			"weight": 14,
+			"dueDate": "TBA",
+			"time": "TBA"
+		}
 	]
 }
